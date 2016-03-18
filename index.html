@@ -64,6 +64,90 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/17/nginx/" class="article-date">
+  <time datetime="2016-03-17T11:56:29.000Z" itemprop="datePublished">2016-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#worker_processes 4;</p>
+<p>events {<br>    worker_connections  1024;<br>}</p>
+<p>error_log logs/error.log debug;</p>
+<p>http {<br>    include       mime.types;<br>    default_type  application/octet-stream;<br>    proxy_buffering on;<br>    proxy_buffers 8 4k;<br>    proxy_buffer_size 4k;<br>    proxy_temp_path /var/nginx/temp;</p>
+<pre><code>proxy_cache_path /var/nginx/cache/one  levels=1:2   keys_zone=one:10m max_size=2g  inactive=1d;
+proxy_cache_key &quot;$host$request_uri&quot;;
+proxy_cache_valid  24h;
+
+#log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;
+#                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;
+#                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;
+
+#access_log  logs/access.log  main;
+
+sendfile        on;
+#tcp_nopush     on;
+
+#keepalive_timeout  0;
+keepalive_timeout  65;
+
+#gzip  on;
+
+upstream www.google.com {
+    server 216.58.219.36:443;
+    server 216.58.219.35:443;
+    server 216.58.219.37:443;
+}
+
+server {
+        listen 80;
+        server_name g.jingyingying.com;
+        return 301 https://g.jingyingying.com$request_uri;
+}
+
+server {
+        proxy_cache one;
+
+        server_name g.jingyingying.com;
+        listen 443;
+
+        ssl on;
+        ssl_certificate ssl/1_g.jingyingying.com_bundle.crt;
+        ssl_certificate_key ssl/ssl.key;
+        ssl_prefer_server_ciphers on;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers &apos;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&apos;;
+        ssl_session_cache shared:SSL:10m;
+        #ssl_ciphers EECDH+aRSA+AES;
+
+        resolver 108.61.10.10;
+        location / {
+                google on;
+                google_scholar on;
+                expires 10m;
+
+        }
+}
+</code></pre><p>}<br>                                                                                                                                        1,0-1         Top</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/17/nginx/" data-id="cilx1ys600001cdjqw2tgjn68" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-network" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/30/network/" class="article-date">
@@ -93,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/30/network/" data-id="cij52sfj90000t4jq1e8setx6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/30/network/" data-id="cilx1ys630002cdjq01xfx3cj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -136,7 +220,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/30/info/" data-id="cij52ufkd0000yijqnmjur3v7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/30/info/" data-id="cilx1ys650003cdjqao2twkv0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/30/hello-world/" data-id="ciisjhw4f0000u2jqqskvu7tl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/30/hello-world/" data-id="cilx1ys5b0000cdjqgj5gcnb8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -208,7 +292,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
     </div>
   </div>
 
@@ -219,6 +303,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/17/nginx/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2015/12/30/network/">Network-读书笔记</a>
