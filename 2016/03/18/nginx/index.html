@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
+  <meta name="description" content="#worker_processes 4;
+events {    worker_connections  1024;}
+error_log logs/error.log debug;
+http {    include       mime.types;    default_type  application/octet-stream;    proxy_buffering on;    pro">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/03/18/nginx/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="#worker_processes 4;
+events {    worker_connections  1024;}
+error_log logs/error.log debug;
+http {    include       mime.types;    default_type  application/octet-stream;    proxy_buffering on;    pro">
+<meta property="og:updated_time" content="2016-03-18T02:23:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:description" content="#worker_processes 4;
+events {    worker_connections  1024;}
+error_log logs/error.log debug;
+http {    include       mime.types;    default_type  application/octet-stream;    proxy_buffering on;    pro">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -62,119 +72,99 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/18/nginx/" class="archive-article-date">
-  <time datetime="2016-03-18T02:23:42.000Z" itemprop="datePublished">Mar 18</time>
+        <section id="main"><article id="post-nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/18/nginx/" class="article-date">
+  <time datetime="2016-03-18T02:23:42.000Z" itemprop="datePublished">2016-03-18</time>
 </a>
-      
-    </header>
+    
   </div>
-</article>
-  
+  <div class="article-inner">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/03/18/nginx-1/" class="archive-article-date">
-  <time datetime="2016-03-18T02:21:52.000Z" itemprop="datePublished">Mar 18</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/18/nginx-1/">nginx</a>
-    </h1>
-  
+        <p>#worker_processes 4;</p>
+<p>events {<br>    worker_connections  1024;<br>}</p>
+<p>error_log logs/error.log debug;</p>
+<p>http {<br>    include       mime.types;<br>    default_type  application/octet-stream;<br>    proxy_buffering on;<br>    proxy_buffers 8 4k;<br>    proxy_buffer_size 4k;<br>    proxy_temp_path /var/nginx/temp;</p>
+<pre><code>proxy_cache_path /var/nginx/cache/one  levels=1:2   keys_zone=one:10m max_size=2g  inactive=1d;
+proxy_cache_key &quot;$host$request_uri&quot;;
+proxy_cache_valid  24h;
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/30/network/" class="archive-article-date">
-  <time datetime="2015-12-30T07:45:12.000Z" itemprop="datePublished">Dec 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/30/network/">Network-读书笔记</a>
-    </h1>
-  
+#log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;
+#                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;
+#                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/30/info/" class="archive-article-date">
-  <time datetime="2015-12-30T07:45:12.000Z" itemprop="datePublished">Dec 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/30/info/">DNS-读书笔记</a>
-    </h1>
-  
+#access_log  logs/access.log  main;
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/12/30/hello-world/" class="archive-article-date">
-  <time datetime="2015-12-30T05:07:06.000Z" itemprop="datePublished">Dec 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/30/hello-world/">Hello World</a>
-    </h1>
-  
+sendfile        on;
+#tcp_nopush     on;
 
-    </header>
+#keepalive_timeout  0;
+keepalive_timeout  65;
+
+#gzip  on;
+
+upstream www.google.com {
+    server 216.58.219.36:443;
+    server 216.58.219.35:443;
+    server 216.58.219.37:443;
+}
+
+server {
+        listen 80;
+        server_name g.jingyingying.com;
+        return 301 https://g.jingyingying.com$request_uri;
+}
+
+server {
+        proxy_cache one;
+
+        server_name g.jingyingying.com;
+        listen 443;
+
+        ssl on;
+        ssl_certificate ssl/1_g.jingyingying.com_bundle.crt;
+        ssl_certificate_key ssl/ssl.key;
+        ssl_prefer_server_ciphers on;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers &apos;EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH&apos;;
+        ssl_session_cache shared:SSL:10m;
+        #ssl_ciphers EECDH+aRSA+AES;
+
+        resolver 108.61.10.10;
+        location / {
+                google on;
+                google_scholar on;
+                expires 10m;
+
+        }
+}
+</code></pre><p>}<br>                                                                                                                                        1,0-1         Top</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/18/nginx/" data-id="cilx322fc0001a8jqdotud0gf" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/18/nginx-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nginx</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
